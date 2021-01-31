@@ -57,8 +57,8 @@ dataset <- rio::import("Week1.csv")
 
 You can uncomment the code below to try different ways to examine the dataset in RStudio. (Remove the # sign from one line at a time.)
 ```{r, eval=FALSE}
-# The View() command opens a data tab in RStudio. Notice the eval=FALSE option is set for this block.
-# Don't evaluate blocks which use the View() command when knitting a file. It could be problematic.
+#The View() command opens a data tab in RStudio. Notice the eval=FALSE option is set for this block.
+#Don't evaluate blocks which use the View() command when knitting a file. It could be problematic.
 View(dataset)
 ```
 
@@ -66,7 +66,7 @@ View(dataset)
 # These commands are all different ways to examine the dataset in R.
 # You can uncomment each row and run the code block to try each one out.
 dplyr::glimpse(dataset) #dplyr is part of the Tidyverse packages
-#str(dataset)
+str(dataset)
 ```
 
 ## Examine the data using the jmv package descriptives
@@ -89,12 +89,12 @@ The rio package (or readr package in RStudio) doesn't automatically convert colu
 
 ```{r}
 # https://suzan.rbind.io/2018/02/dplyr-tutorial-2/#working-with-discrete-columns
-dataset <- dataset %>% mutate(nominal = as.factor(nominal))
+#dataset <- dataset %>% mutate(nominal = as.factor(nominal))
 levels(dataset$nominal)
-dataset <- dataset %>% mutate(ordinal = as.factor(ordinal))
+#dataset <- dataset %>% mutate(ordinal = as.factor(ordinal))
 levels(dataset$ordinal)
 # These could have been done on a single line.
-# dataset <- dataset %>% mutate_at(vars(nominal, ordinal), factor)
+#dataset <- dataset %>% mutate_at(vars(nominal, ordinal), factor)
 
 # Correct order can be specified for ordinal factors.
 dataset <- dataset %>% mutate(ordinal = recode_factor(ordinal,"first"="first","second"="second","third"="third","fourth"="fourth",.ordered=TRUE))
